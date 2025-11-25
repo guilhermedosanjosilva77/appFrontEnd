@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import "./CadastrarCategoria.css"
 
 const API_CATEGORIAS_URL = "http://localhost:4567/categorias";
 
-function GerenciarCategorias({ categoria, setCategoria }) {
+function CadastrarCategoria({ categoria, setCategoria }) {
     const [nome, setNome] = useState("");
     const [categoriaEmEdicao, setCategoriaEmEdicao] = useState(null);
     const navigate = useNavigate();
@@ -94,7 +95,6 @@ function GerenciarCategorias({ categoria, setCategoria }) {
 
             if (!response.ok && response.status !== 204) throw new Error(`Status: ${response.status}`);
             
-            // Remove a categoria da lista local
             setCategoria((prev) => prev.filter((c) => c.id !== id));
             alert(`Categoria ID ${id} deletada!`);
 
@@ -131,7 +131,7 @@ function GerenciarCategorias({ categoria, setCategoria }) {
 
     return (
         <div className="gerenciar-categorias">
-            <h2>{categoriaEmEdicao ? "✏️ Editar Categoria" : "➕ Cadastrar Categoria"}</h2>
+            <h2>{categoriaEmEdicao ? "✏️ Editar Categoria" : " Cadastrar Categoria"}</h2>
 
             <form onSubmit={handleSubmit}>
                 <input
@@ -180,4 +180,4 @@ function GerenciarCategorias({ categoria, setCategoria }) {
     );
 }
 
-export default GerenciarCategorias;
+export default CadastrarCategoria;

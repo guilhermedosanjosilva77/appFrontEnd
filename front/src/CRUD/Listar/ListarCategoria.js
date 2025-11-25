@@ -61,10 +61,6 @@ function ListarCategoria({ categoria, setCategoria, produto, setProduto }) {
                   <button onClick={() => handleEdit(item)}>Editar</button>
 
                   <button onClick={() => handleDelete(item.id)}>Deletar</button>
-                  
-                  <button onClick={() => handleIrParaCadastro(item.id)}>
-                    Cadastrar Produto nesta categoria
-                  </button>
 
                   <button onClick={() => handleIrParaListaProdutos(item.id)}>
                     Listar Produtos
@@ -74,7 +70,9 @@ function ListarCategoria({ categoria, setCategoria, produto, setProduto }) {
             </li>
           ))}
         </ul>
+        
       )}
+      <button onClick={handleIrParaCadastro}>Ir para cadastro</button>
     </div>
   );
 }

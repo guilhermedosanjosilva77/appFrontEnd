@@ -3,7 +3,9 @@ import ListarCategoria from "./CRUD/Listar/ListarCategoria";
 import Cadastrocategoria from "./CRUD/Cadastrar/CadastrarCategoria";
 import ListarProdutosPorCategoria from "./CRUD/Listar/ListarProdutoPorCategoria";
 import CadastroProduto from "./CRUD/Cadastrar/CadastrarProduto"; 
-import { Route, Routes, useNavigate } from "react-router-dom"; 
+import Home from "./CRUD/Home";
+import { Route, Routes, useNavigate } from "react-router-dom";
+
 
 function App() {
   const [categoria, setCategoria] = useState([]);
@@ -19,8 +21,7 @@ function App() {
 
   return (
     <div>
-     
-      <button onClick={irParapage}>Cadastrar Categoria</button>
+
       
      
 
@@ -50,7 +51,7 @@ function App() {
 
         <Route
          path="/"
-         element={<ListarCategoria categoria={categoria} setCategoria={setCategoria} />} />
+         element={<Home/>} />
 
          <Route
          path="/produtos/:categoriaId"

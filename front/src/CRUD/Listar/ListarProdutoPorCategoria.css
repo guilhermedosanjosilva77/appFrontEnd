@@ -1,0 +1,44 @@
+.lista-container {
+  padding: 30px;
+  max-width: 600px;
+  margin: 40px auto;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.lista-title {
+  font-size: 32px;
+  font-weight: bold;
+  color: #2b2b52;
+  margin-bottom: 20px;
+}
+
+.lista-empty {
+  color: #666;
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+.lista-ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.lista-item {
+  background: #f4f6f9;
+  padding: 15px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  font-size: 18px;
+  text-align: left;
+  transition: 0.2s;
+}
+
+.lista-item:hover {
+  background: #e1e6ef;
+  transform: translateX(5px);
+}
