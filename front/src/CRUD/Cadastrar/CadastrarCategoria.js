@@ -160,12 +160,7 @@ function CadastrarCategoria({ categoria, setCategoria }) {
                     {categoria.map((c) => (
                         <li key={c.id}>
                             {c.nome} (ID: {c.id})
-                            <button onClick={() => handleEditarClick(c)} style={{ margin: '0 10px' }}>
-                                Editar
-                            </button>
-                            <button onClick={() => deletarCategoria(c.id)}>
-                                Excluir
-                            </button>
+                            
                         </li>
                     ))}
                 </ul>
