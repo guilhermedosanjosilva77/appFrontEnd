@@ -24,8 +24,8 @@ public class CategoriaDAO {
         String sql = "SELECT * FROM categorias";
 
         try (Connection conn = ConnectionFactory.getConnection();
-            PreparedStatement stmt = conn.prepareStatement(sql);
-            ResultSet rs = stmt.executeQuery();) {
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery();) {
             
             while(rs.next()) {
                 Categoria categoria = new Categoria(
@@ -40,7 +40,7 @@ public class CategoriaDAO {
         return categorias;
     }
 
-     //======================================//
+      //======================================//
     // READ BY ID
     //======================================//
     public Categoria buscarPorId(Long id) {
@@ -99,26 +99,30 @@ public class CategoriaDAO {
     }
 
     // ------------------------------------
-    // UPDATE
+    // UPDATE (CORRIGIDO) ✅
     // ------------------------------------
     public void atualizar(Categoria categoria) {
 
-        String sql = "UPDATE produtos SET nome = ? WHERE id = ?";
+        // CORREÇÃO 1: Deve atualizar a tabela 'categorias', não 'produtos'
+        String sql = "UPDATE categorias SET nome = ? WHERE id = ?"; 
 
         try (Connection conn = ConnectionFactory.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             // define os parâmetros (os novos valores)
-            stmt.setString(1, categoria.getNome());
-            // define o ID no WHERE (o último '?')
-            stmt.setLong(4, categoria.getId());
+            // 1º Parâmetro: nome
+            stmt.setString(1, categoria.getNome()); 
+            
+            // CORREÇÃO 2: O ID é o 2º parâmetro (WHERE id = ?)
+            stmt.setLong(2, categoria.getId()); 
 
             // executa a atualização
             int linhasAfetadas = stmt.executeUpdate();
             System.out.println("Categoria ID " + categoria.getId() + " atualizado. Linhas afetadas: " + linhasAfetadas);
 
         } catch (SQLException e) {
-            System.err.println("Erro ao atualizar produto ID: " + categoria.getId() + ". Detalhes: " + e.getMessage());
+            // Mensagem de erro ajustada para Categoria
+            System.err.println("Erro ao atualizar categoria ID: " + categoria.getId() + ". Detalhes: " + e.getMessage()); 
             e.printStackTrace();
         }
     }
