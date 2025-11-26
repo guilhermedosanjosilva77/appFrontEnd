@@ -65,7 +65,7 @@ function ListarCategoria({ categoria, setCategoria }) {
   };
 
   const handleIrParaCadastro = () => {
-    navigate(`/cadastrarProduto/`); // Ajustado para ir para o cadastro geral
+    navigate(`/cadastrarProduto`);// Ajustado para ir para o cadastro geral
   };
 
   const handleIrParaListaProdutos = (categoriaId) => {

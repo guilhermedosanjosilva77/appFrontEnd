@@ -45,7 +45,7 @@ function App() {
 
 
         <Route
-          path="/cadastrarProduto/:categoriaId" 
+          path="/cadastrarProduto" 
           element={<CadastroProduto produto={produto} setProduto={setProduto}/>}
         />
 
