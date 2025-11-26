@@ -1,12 +1,23 @@
 import { useEffect, useState } from "react";
+// 1. IMPORTAR 'useNavigate' AQUI
+import { useNavigate } from "react-router-dom"; 
 
 export default function CadastroProduto({ produto, setProduto }) {
+  // 2. DECLARAR A FUNÇÃO 'navigate' AQUI
+  const navigate = useNavigate(); 
+
+  function irParapage() {
+    navigate("/listar");
+  }
+  
   const [nome, setNome] = useState("");
   const [preco, setPreco] = useState(0);
   const [estoque, setEstoque] = useState(0);
   const [opcoes, setOpcoes] = useState([]);
   const [categoriaId, setCategoriaId] = useState("");
   const [loading, setLoading] = useState(false);
+
+  // ... (carregarCategorias, useEffect, adicionaProduto, handleSubmit - códigos omitidos)
 
   async function carregarCategorias() {
     setLoading(true);
@@ -41,7 +52,7 @@ export default function CadastroProduto({ produto, setProduto }) {
       const data = await response.json();
       console.log("Produto criado →", data);
 
-      // 🔥 Adiciona o novo produto no estado global
+      /
       setProduto((prev) => [...prev, data]);
 
       // Limpar campos
@@ -49,7 +60,6 @@ export default function CadastroProduto({ produto, setProduto }) {
       setPreco(0);
       setEstoque(0);
       setCategoriaId("");
-
     } catch (error) {
       console.error("Erro ao criar produto", error);
     }
@@ -60,11 +70,12 @@ export default function CadastroProduto({ produto, setProduto }) {
     adicionaProduto();
   };
 
+
   return (
     <div className="container">
       <h2>Cadastrar Produto</h2>
       <form onSubmit={handleSubmit}>
-        
+        {/* ... (Inputs) ... */}
         <label>Nome:</label>
         <input
           type="text"
@@ -92,7 +103,10 @@ export default function CadastroProduto({ produto, setProduto }) {
         {loading ? (
           <p>Carregando categorias...</p>
         ) : (
-          <select value={categoriaId} onChange={(e) => setCategoriaId(e.target.value)}>
+          <select
+            value={categoriaId}
+            onChange={(e) => setCategoriaId(e.target.value)}
+          >
             <option value="">Selecione</option>
             {opcoes.map((c) => (
               <option key={c.id} value={c.id}>
@@ -102,7 +116,11 @@ export default function CadastroProduto({ produto, setProduto }) {
           </select>
         )}
 
-        <button type="submit">Salvar Produto</button>
+        <button type="submit" onClick={irParapage}>Salvar Produto</button>
+        
+        {/* 3. CORREÇÃO: Usar o caminho da rota (ex: /produtos) e envolver o navigate em uma função anônima */}
+        {/* Assumindo que a rota para ListarProdutoPorCategoria é '/produtos' ou '/listagem' */}
+    
       </form>
     </div>
   );
