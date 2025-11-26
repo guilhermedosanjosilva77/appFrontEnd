@@ -52,7 +52,7 @@ export default function CadastroProduto({ produto, setProduto }) {
       const data = await response.json();
       console.log("Produto criado →", data);
 
-      /
+      
       setProduto((prev) => [...prev, data]);
 
       // Limpar campos

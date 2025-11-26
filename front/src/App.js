@@ -2,66 +2,76 @@ import React, { useState } from "react";
 import ListarCategoria from "./CRUD/Listar/ListarCategoria";
 import Cadastrocategoria from "./CRUD/Cadastrar/CadastrarCategoria";
 import ListarProdutosPorCategoria from "./CRUD/Listar/ListarProdutoPorCategoria";
-import CadastroProduto from "./CRUD/Cadastrar/CadastrarProduto"; 
+import CadastroProduto from "./CRUD/Cadastrar/CadastrarProduto";
 import Home from "./CRUD/Home";
 import { Route, Routes, useNavigate } from "react-router-dom";
 
-
 function App() {
-  const [categoria, setCategoria] = useState([]);
-  const [produto, setProduto] = useState([]);
-  const [allProducts,categoriaId] = useState([])
+  // Inicialização correta dos estados
+  const [categoria, setCategoria] = useState([]);
+  const [produto, setProduto] = useState([]);
 
+  const navigate = useNavigate();
 
-  const navigate = useNavigate();
+  // 🔑 Função que navega para a página de Cadastro de Categoria
+  function irParapage() {
+    navigate("/cadastrar");
+  }
 
-  function irParapage() {
-    navigate("/cadastrar"); 
-  }
-
-  return (
-    <div>
-
-      
-     
-
-      <Routes>
-        <Route
-          path="/listar"
-          element={
-            <ListarCategoria 
-              categoria={categoria} 
-              setCategoria={setCategoria} 
-              produto={produto} 
-              setProduto={setProduto} 
-            />
-          }
-        />
+  return (
+    <div>
         
-        <Route
-          path="/cadastrar"
-          element={<Cadastrocategoria categoria={categoria} setCategoria={setCategoria} />}
-        />
+        {/* 🔑 CORREÇÃO: Adicionando um botão para chamar a função irParapage */}
+        <button onClick={irParapage} style={{ margin: '10px', padding: '10px' }}>
+            Ir para Cadastro de Categoria
+        </button>
 
-
-        <Route
-          path="/cadastrarProduto" 
-          element={<CadastroProduto produto={produto} setProduto={setProduto}/>}
-        />
-
-        <Route
-         path="/"
-         element={<Home/>} />
-
-         <Route
-         path="/produtos/:categoriaId"
-         element={<ListarProdutosPorCategoria produto={produto}/>}
-         
-         />
-
-      </Routes>
-    </div>
-  );
+      <Routes>
+        {/* Rota para Listar Categorias */}
+        <Route
+          path="/listar"
+          element={
+            <ListarCategoria
+              categoria={categoria}
+              setCategoria={setCategoria}
+            />
+          }
+        />
+        {/* Rota para Cadastrar Categoria */}
+        <Route
+          path="/cadastrar"
+          element={
+            <Cadastrocategoria
+              categoria={categoria}
+              setCategoria={setCategoria}
+            />
+          }
+        />
+        <Route
+          path="/cadastrarProduto"
+          element={
+            <CadastroProduto
+              produto={produto}
+              setProduto={setProduto}
+              categoria={categoria}
+            />
+          }
+        />
+        {/* Rota Home */}
+        <Route path="/" element={<Home />} />
+        {/* Rota para Listar Produtos por Categoria */}
+        <Route
+          path="/produtos/:categoriaId"
+          element={
+            <ListarProdutosPorCategoria
+              produto={produto}
+              setProduto={setProduto}
+            />
+          }
+        />
+      </Routes>
+    </div>
+  );
 }
 
 export default App;
