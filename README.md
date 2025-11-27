@@ -1,70 +1,89 @@
-# Getting Started with Create React App
+# README
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Autores:**
+- Guilherme dos Anjos Silva – Matrícula: 25173685
+- João Vitor Colleto de Souza - Matrícula: 25173644
 
-## Available Scripts
+## 1. Configuração Prévia do Ambiente
 
-In the project directory, you can run:
+Antes de iniciar as aplicações, é obrigatório configurar o banco de dados e obter os arquivos do projeto.
 
-### `npm start`
+### 1.1. Criação do Banco de Dados (MySQL Workbench)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+O banco de dados da aplicação deve ser criado e configurado no MySQL Workbench, na ordem que está definida:
+```sql
+-- 1. Criar o banco de dados
+CREATE DATABASE aulajdbc;
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+-- 2. Selecionar o banco
+USE aulajdbc;
 
-### `npm test`
+-- 3. Criar tabela de categorias
+CREATE TABLE categorias (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(255) NOT NULL
+);
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+-- 4. Criar tabela de produtos
+CREATE TABLE IF NOT EXISTS produtos (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(255) NOT NULL,
+    preco DOUBLE NOT NULL,
+    estoque INT NOT NULL,
+    id_categoria BIGINT,
+    FOREIGN KEY (id_categoria) REFERENCES categorias(id)
+);
+```
 
-### `npm run build`
+> **Nota:** O banco estará vazio, pois os dados serão adicionados durante a utilização da aplicação.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 1.2. Clonagem do Repositório
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Obtenha o código-fonte do projeto clonando o repositório no local desejado.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. **Abrir o Terminal/Prompt:** Navegue até a pasta onde deseja salvar o projeto
+2. **Clonar:** Execute o comando de clonagem:
+```bash
+git clone [URL_DO_REPOSITORIO]
+```
 
-### `npm run eject`
+## 2. Instruções de Execução do Back-End (Java Spark)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+A aplicação Back-End deve ser iniciada primeiro, pois o Front-End depende dela para comunicação via API.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. **Acessar a Pasta Back-End:** No VS Code, abra o explorador de arquivos e navegue para a pasta que contém o código Java (`appFrontend`)
+2. **Abrir em Nova Janela:** Clique com o botão direito na pasta do Back-End e selecione "Abrir em nova janela" (ou use `File > New Window` no VS Code e abra a pasta do Back-End)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 2.1. Resolução de Dependências (Caso de erro dos Sparks)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Se a aplicação não reconhecer as bibliotecas do Spark, siga estes passos:
 
-## Learn More
+1. **Verificar Dependências:** No canto inferior esquerdo do VS Code, localize o painel "Java Projects" ou "Maven"
+2. **Importar Bibliotecas:** Se houver erros ou dependências faltando:
+   - No painel de projetos Java, clique no ícone `+` (Adicionar Dependência)
+   - Navegue até a pasta de bibliotecas do seu projeto (geralmente `lib/` ou similar) e importe todos os arquivos `.jar` do Spark e do MySQL (ou de qualquer outro que esteja faltando)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+> Este procedimento deve resolver o erro de "sparks" e garantir que todas as classes sejam reconhecidas.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 2.2. Inicialização
 
-### Code Splitting
+1. **Localizar o Ponto de Entrada:** Abra o arquivo principal da aplicação Java (geralmente `Main.java` ou similar)
+2. **Rodar a Aplicação:** Clique no botão "Run" (ou use o comando de execução Maven/Gradle, dependendo da sua configuração)
+3. **Confirmação:** A aplicação estará rodando na porta configurada (4567). Verifique o console para a mensagem de sucesso de inicialização
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 3. Instruções de Execução do Front-End (React)
 
-### Analyzing the Bundle Size
+Com o Back-End rodando, podemos iniciar o Front-End para acessar a interface do usuário.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+1. **Acessar a Pasta Front-End:** Abra uma nova janela do VS Code e navegue para a pasta Front-End (ex: `front/` ou `my-app`)
+2. **Instalar Dependências:** Abra o terminal dentro desta pasta (`Terminal > New Terminal`) e execute:
+```bash
+npm install
+```
 
-### Making a Progressive Web App
+3. **Iniciar o Servidor:** Execute:
+```bash
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+4. **Acesso no Navegador:** O terminal irá exibir a URL local onde o Front-End foi iniciado (geralmente `http://localhost:3000/cadastrar`). Abra seu navegador e acesse o endereço fornecido para utilizar a aplicação.
