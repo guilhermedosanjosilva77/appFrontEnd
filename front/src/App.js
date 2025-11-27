@@ -7,13 +7,14 @@ import Home from "./CRUD/Home";
 import { Route, Routes, useNavigate } from "react-router-dom";
 
 function App() {
-  // Inicialização correta dos estados
+  
   const [categoria, setCategoria] = useState([]);
   const [produto, setProduto] = useState([]);
 
+
   const navigate = useNavigate();
 
-  // 🔑 Função que navega para a página de Cadastro de Categoria
+  
   function irParapage() {
     navigate("/cadastrar");
   }
@@ -21,13 +22,13 @@ function App() {
   return (
     <div>
         
-        {/* 🔑 CORREÇÃO: Adicionando um botão para chamar a função irParapage */}
+        
         <button onClick={irParapage} style={{ margin: '10px', padding: '10px' }}>
             Ir para Cadastro de Categoria
         </button>
 
       <Routes>
-        {/* Rota para Listar Categorias */}
+        
         <Route
           path="/listar"
           element={
@@ -37,7 +38,7 @@ function App() {
             />
           }
         />
-        {/* Rota para Cadastrar Categoria */}
+        
         <Route
           path="/cadastrar"
           element={
@@ -57,9 +58,9 @@ function App() {
             />
           }
         />
-        {/* Rota Home */}
+        
         <Route path="/" element={<Home />} />
-        {/* Rota para Listar Produtos por Categoria */}
+        
         <Route
           path="/produtos/:categoriaId"
           element={

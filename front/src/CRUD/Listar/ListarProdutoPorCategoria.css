@@ -1,44 +1,115 @@
+/* --- Estilos de Layout Geral --- */
 .lista-container {
-  padding: 30px;
-  max-width: 600px;
-  margin: 40px auto;
-  background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  font-family: Arial, sans-serif;
+    padding: 30px;
+    max-width: 600px;
+    margin: 40px auto;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-family: Arial, sans-serif;
 }
 
 .lista-title {
-  font-size: 32px;
-  font-weight: bold;
-  color: #2b2b52;
-  margin-bottom: 20px;
+    font-size: 32px;
+    font-weight: bold;
+    color: #2b2b52;
+    margin-bottom: 20px;
 }
 
 .lista-empty {
-  color: #666;
-  font-size: 18px;
-  margin-top: 20px;
+    color: #666;
+    font-size: 18px;
+    margin-top: 20px;
 }
 
 .lista-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
+/* --- Estilos da Lista de Itens --- */
 .lista-item {
-  background: #f4f6f9;
-  padding: 15px;
-  margin-bottom: 12px;
-  border-radius: 8px;
-  font-size: 18px;
-  text-align: left;
-  transition: 0.2s;
+    background: #f4f6f9;
+    padding: 15px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    font-size: 18px;
+    text-align: left;
+    display: flex; 
+    align-items: center; 
+    gap: 10px; /* Espaçamento entre os elementos (span, input, botões) */
+    transition: 0.2s;
 }
 
 .lista-item:hover {
-  background: #e1e6ef;
-  transform: translateX(5px);
+    background: #e1e6ef;
+    transform: translateX(5px);
+}
+
+/* Garante que o nome do produto ocupe o espaço necessário */
+.lista-item > span {
+    flex-grow: 1; 
+}
+
+/* --- Estilos de EDIÇÃO (Input) --- */
+
+/* 🔑 Uso de !important para garantir que sobrescreva estilos globais */
+.editing-input {
+    flex-grow: 1; 
+    padding: 8px !important;
+    border: 2px solid #5352ed !important; 
+    border-radius: 4px !important;
+    font-size: 16px !important;
+    background-color: #ffffff !important; 
+    color: #2b2b52 !important;
+}
+
+/* --- Estilos dos Botões --- */
+
+/* Estilo Base para todos os botões dentro do item */
+.lista-item button {
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s;
+    color: white;
+    /* Ajusta a ordem visual */
+    flex-shrink: 0; 
+}
+
+/* Botão EDITAR */
+.edit-button {
+    background-color: #5352ed;
+}
+
+.edit-button:hover {
+    background-color: #3f3e9c;
+}
+
+/* Botão SALVAR */
+.save-button {
+    background-color: #1abc9c;
+}
+.save-button:hover {
+    background-color: #148f77;
+}
+
+/* Botão CANCELAR (Adicionado para melhor usabilidade) */
+.cancel-button {
+    background-color: #95a5a6;
+}
+.cancel-button:hover {
+    background-color: #7f8c8d;
+}
+
+/* Botão DELETAR */
+.delete-button {
+    background-color: #eb3b5a;
+}
+.delete-button:hover {
+    background-color: #c93048;
 }

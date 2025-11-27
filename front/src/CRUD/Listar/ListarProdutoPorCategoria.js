@@ -37,7 +37,7 @@ function ListarProdutosPorCategoria({ produto, setProduto }) {
             if (!response.ok && response.status !== 204)
                 throw new Error(`Status: ${response.status}`);
 
-            // 🔑 setProduto é necessário para atualizar o estado global
+            
             setProduto((prev) => prev.filter((p) => p.id !== id));
             alert(`Produto ID ${id} deletado!`);
         } catch (error) {
@@ -67,7 +67,7 @@ function ListarProdutosPorCategoria({ produto, setProduto }) {
                 throw new Error(`Erro: ${response.status} - ${errorData.message || response.statusText}`);
             }
 
-            // 🔑 setProduto é necessário para atualizar o estado global
+           
             setProduto(
                 produto.map((p) => (p.id === id ? dadosAtualizados : p))
             );
@@ -100,6 +100,7 @@ function ListarProdutosPorCategoria({ produto, setProduto }) {
                                 <>
                                     <input
                                         type="text"
+                                        className="editing-input"
                                         value={novoNomeProduto}
                                         onChange={(e) => setNovoNomeProduto(e.target.value)}
                                     />

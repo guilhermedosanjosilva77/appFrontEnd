@@ -131,7 +131,7 @@ function CadastrarCategoria({ categoria, setCategoria }) {
 
     return (
         <div className="gerenciar-categorias">
-            <h2>{categoriaEmEdicao ? "✏️ Editar Categoria" : " Cadastrar Categoria"}</h2>
+            <h2>{categoriaEmEdicao ? " Editar Categoria" : " Cadastrar Categoria"}</h2>
 
             <form onSubmit={handleSubmit}>
                 <input

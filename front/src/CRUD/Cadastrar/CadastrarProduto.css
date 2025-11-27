@@ -1,0 +1,105 @@
+/* --- ESTILOS GERAIS DE LAYOUT --- */
+
+/* O estilo do <body> é geralmente definido globalmente, mas para garantir o fundo: */
+body {
+    font-family: "Roboto", Arial, sans-serif;
+    background: #f4f4f7;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container principal, renomeado de .gerenciar-categorias para .container */
+.container {
+    max-width: 600px;
+    background: #ffffff;
+    padding: 30px;
+    margin: 40px auto;
+    border-radius: 12px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.container h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 25px;
+    font-weight: 600;
+    font-size: 1.8rem;
+}
+
+/* --- ESTILOS DO FORMULÁRIO --- */
+
+.container form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Estilo para todas as labels */
+.container label {
+    margin-top: 5px;
+    margin-bottom: -5px;
+    font-weight: 500;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+/* Estilo para todos os campos de input e select */
+.container input[type="text"],
+.container input[type="number"],
+.container select {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    width: 100%; /* Garante que ocupe toda a largura */
+    box-sizing: border-box; /* Inclui padding e border na largura total */
+    transition: all 0.3s ease;
+    appearance: none; /* Remove estilo padrão em selects/inputs em alguns navegadores */
+}
+
+.container input:focus,
+.container select:focus {
+    border-color: #4a90e2;
+    box-shadow: 0px 0px 6px rgba(74, 144, 226, 0.4);
+    outline: none;
+}
+
+/* --- BOTÃO PRINCIPAL (Salvar Produto) --- */
+
+.container button[type="submit"] {
+    padding: 12px 18px;
+    background: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: 0.3s;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.container button[type="submit"]:hover {
+    background: #357ac9;
+}
+
+/* Estilo para o parágrafo de carregamento */
+.container p {
+    color: #777;
+    text-align: center;
+    font-style: italic;
+    margin: 10px 0;
+}
+
+/* --- RESPONSIVIDADE --- */
+
+@media (max-width: 480px) {
+    .container {
+        padding: 20px;
+        margin: 20px;
+    }
+
+    .container h2 {
+        font-size: 1.5rem;
+    }
+}

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 // 1. IMPORTAR 'useNavigate' AQUI
 import { useNavigate } from "react-router-dom"; 
-
+import "./CadastrarProduto.css"
 export default function CadastroProduto({ produto, setProduto }) {
   // 2. DECLARAR A FUNÇÃO 'navigate' AQUI
   const navigate = useNavigate(); 
@@ -17,7 +17,7 @@ export default function CadastroProduto({ produto, setProduto }) {
   const [categoriaId, setCategoriaId] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // ... (carregarCategorias, useEffect, adicionaProduto, handleSubmit - códigos omitidos)
+  
 
   async function carregarCategorias() {
     setLoading(true);
@@ -75,7 +75,7 @@ export default function CadastroProduto({ produto, setProduto }) {
     <div className="container">
       <h2>Cadastrar Produto</h2>
       <form onSubmit={handleSubmit}>
-        {/* ... (Inputs) ... */}
+        
         <label>Nome:</label>
         <input
           type="text"
